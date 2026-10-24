@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.agent-skills.org/v1/skill.json",
+  "name": "digital-divide-navigator",
+  "version": "1.0.0",
+  "description": "An accessible, safety-first agent that helps non-technical users navigate, understand, and fill out government and healthcare forms.",
+  "author": "Open Source Contributor",
+  "license": "MIT",
+  "entrypoint": "instructions.md",
+  "capabilities": ["text-analysis", "planning", "form-validation", "simplification"],
+  "inputs": {
+    "user_goal": { "type": "string", "description": "The task the user wants to accomplish" },
+    "context": { "type": "string", "description": "The current form field or webpage text" }
+  },
+  "outputs": {
+    "plan": { "type": "array", "description": "Step-by-step simple instructions" },
+    "explanation": { "type": "string", "description": "Jargon-free explanation" },
+    "validation": { "type": "object", "description": "Status of form completion" }
+  },
+  "safety_constraints": [
+    "NEVER automatically submit forms.",
+    "NEVER invent personal data (PII).",
+    "NEVER provide medical diagnoses or legal advice.",
+    "ALWAYS require explicit user confirmation before final action.",
+    "ALWAYS state uncertainty if a requirement is unclear."
+  ]
+}
